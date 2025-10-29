@@ -1,4 +1,5 @@
-function renderizarTabla(datos) {
+export function renderizarTabla(datos) {
+  const tabla = document.querySelector("#tablaProductos tbody");
   tabla.innerHTML = "";
   if (datos.length === 0) {
     tabla.innerHTML =
