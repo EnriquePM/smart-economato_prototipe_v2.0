@@ -14,12 +14,12 @@ export function renderizarTabla(datos) {
     fila.innerHTML = `
       <td>${p.id}</td>
       <td>${p.nombre}</td>
-      <td>${p.categoria.nombre}</td>
+      <td>${p.categorias}</td>
       <td>${p.precio.toFixed(2)}</td>
       <td>${p.stock}</td>
       <td>${p.stockMinimo}</td>
-      <td>${p.proveedor.nombre}</td>
-      <td>${p.proveedor.isla}</td>
+      <td>${p.proveedor}</td>
+      <td>${p.proveedor}</td>
     `;
     tabla.appendChild(fila);
   });

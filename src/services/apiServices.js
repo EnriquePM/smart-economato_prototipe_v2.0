@@ -74,3 +74,29 @@ export const productos = [
     proveedor: { nombre: "Salinas de Janubio", isla: "Lanzarote" },
   },
 ];
+
+async function getProductos() {
+  const response = await fetch(
+    `https://my-json-server.typicode.com/EnriquePM/smart-economato_prototipe_v2.0/productos/`
+  );
+  const data = await response.json();
+  return data;
+}
+
+async function getProveedores() {
+  const response = await fetch(
+    `https://my-json-server.typicode.com/EnriquePM/smart-economato_prototipe_v2.0/proveedores/`
+  );
+  const data = await response.json();
+  return data;
+}
+
+async function getCategoria() {
+  const response = await fetch(
+    `https://my-json-server.typicode.com/EnriquePM/smart-economato_prototipe_v2.0/categorias/`
+  );
+  const data = await response.json();
+  return data;
+}
+
+export { getCategoria, getProveedores, getProductos };

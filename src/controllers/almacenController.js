@@ -1,10 +1,16 @@
-import { productos } from "../services/apiServices.js";
+//import { productos } from "../services/apiServices.js";
 import {
   filtrarPorCategoria,
   buscarProducto,
   ordenarPorPrecio,
   comprobarStockMinimo,
 } from "../utils/funciones.js";
+
+import {
+  getCategoria,
+  getProveedores,
+  getProductos,
+} from "../services/apiServices.js";
 
 import { renderizarTabla } from "../views/economato-ui.js";
 
@@ -21,10 +27,27 @@ const eventMap = [
   { selector: "#btnMostrarTodos", event: "click", handler: onShowAll },
   { selector: "#categoriaSelect", event: "change", handler: onFiltrar },
 ];
+let productos;
 let productosMostrados;
+let categorias;
+let proveedores;
 
-function inicializar() {
+async function inicializar() {
+  categorias = await getCategoria();
+  proveedores = await getProveedores();
+  productos = await getProductos();
   productosMostrados = [...productos];
+
+  productos = productos.map((p) => ({
+    id: p.id,
+    categorias: categorias.find((c) => c.id === p.categoriaId) || {
+      nombre: "Sin categoría",
+    },
+    proveedores: proveedores.find((pe) => pe.id === p.proveedorId) || {
+      nombre: "Sin proveedor",
+    },
+  }));
+
   renderizarTabla(productosMostrados);
   bindEvents(eventMap);
 }
