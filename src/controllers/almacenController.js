@@ -14,6 +14,9 @@ import {
 
 import { renderizarTabla } from "../views/economato-ui.js";
 
+import { categorias } from "../models/categoria.js";
+import { proveedor } from "../models/proveedor.js";
+
 const inputBusqueda = document.querySelector("#busqueda");
 const btnBuscar = document.querySelector("#btnBuscar");
 const btnStock = document.querySelector("#btnStock");
@@ -29,27 +32,39 @@ const eventMap = [
 ];
 let productos;
 let productosMostrados;
-let categorias;
-let proveedores;
+
 
 async function inicializar() {
-  categorias = await getCategoria();
-  proveedores = await getProveedores();
-  productos = await getProductos();
-  productosMostrados = [...productos];
+  let categorias = crearCategoria()
+  console.log(categorias)
+  let proveedores = await getProveedores();
+  let productos = await getProductos();
+  let productosMostrados = [...productos];
 
   productos = productos.map((p) => ({
     id: p.id,
     categorias: categorias.find((c) => c.id === p.categoriaId) || {
       nombre: "Sin categoría",
     },
-    proveedores: proveedores.find((pe) => pe.id === p.proveedorId) || {
+    proveedor: proveedor.find((pe) => pe.id === p.proveedorId) || {
       nombre: "Sin proveedor",
     },
   }));
 
   renderizarTabla(productosMostrados);
   bindEvents(eventMap);
+}
+
+async function crearCategoria(){
+  let categoriasCrudas = await getCategoria()
+
+  let categoriasModeladas = categoriasCrudas.map(p => {
+    return new categorias(p.id,p.nombre,p.descripcion)
+  })
+
+  console.log(categoriasModeladas)
+
+  return categoriasModeladas
 }
 
 function onBuscar() {
