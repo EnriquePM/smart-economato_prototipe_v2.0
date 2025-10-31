@@ -1,10 +1,8 @@
-export class categorias{
+export class Categorias{
     constructor(id,nombre,descripcion){
         this.id=id
         this.nombre=nombre
         this.descripcion=descripcion
     }
 }
-    this.id=id,
-    this.nombre=nombre,
-    this.descripcion=descripcion
+  

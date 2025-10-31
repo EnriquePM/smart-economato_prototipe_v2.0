@@ -1,4 +1,4 @@
-export class proveedor{
+export class Proveedor{
     constructor(id,nombre,contacto,telefono,email,direccion){
         this.id=id
         this.nombre=nombre
