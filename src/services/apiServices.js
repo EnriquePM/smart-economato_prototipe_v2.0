@@ -1,6 +1,6 @@
 const API_URL =
-  "https://my-json-server.typicode.com/tcasest/smart-economato-api";
-//const API_URL = 'http//localhost:3000'
+ // "https://my-json-server.typicode.com/tcasest/smart-economato-api";
+  'http://localhost:3000'
 
 export async function getProducto() {
   try {
