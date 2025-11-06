@@ -36,17 +36,16 @@ export function renderizarTabla(datos) {
 export function renderizarCategoria(datos){
   const selector= document.querySelector("#categoriaSelect")
   selector.innerHTML="";
-  if(datos==0){
-    selector.innerHTML=
-    '<option value="">-- Categoría --</option>';
-    return;
-  }
+  
+  const opcionDefault= document.createElement("option")
+  opcionDefault.value=""
+  opcionDefault.textContent="-- Categoria --"
+  selector.appendChild(opcionDefault)
 
   datos.forEach((c) =>{
     const sel=document.createElement("option");
-    sel.innerHTML=`
-       <option value="${c.nombre}">${c.nombre}</option>
-    `
+    sel.value=c.nombre
+    sel.textContent=c.nombre
     selector.appendChild(sel);
   })
   }

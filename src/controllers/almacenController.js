@@ -52,7 +52,7 @@ async function onShowAll() {
 }
 function onFiltrar() {
   const cat = selectCategoria.value;
-  productosMostrados = filtrarPorCategoria(productos, cat);
+  productosMostrados = cat ? filtrarPorCategoria(productos, cat) : [...productos]
   renderizarTabla(productosMostrados);
 }
 
