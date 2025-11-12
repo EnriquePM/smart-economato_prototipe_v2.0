@@ -2,8 +2,8 @@ const API_URL = 'http://localhost:3000'
 
 export const AuthService = {
     async login(username, password) {
-        const response = await fetch('$(API_URL)/usuarios?username=${usernae}&password=${password}')
-        const data = response.json()
+        const response = await fetch(`$(API_URL)/usuarios?username=${username}&password=${password}`)
+        const data = await response.json()
         
         //Comprobamos si data trae valores
         if(data.lenght===0){}
