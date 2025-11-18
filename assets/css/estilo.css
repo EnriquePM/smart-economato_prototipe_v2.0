@@ -6,7 +6,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #005fa3;
+  color: #a37500;
 }
 
 .controles {
@@ -27,7 +27,7 @@ button {
 }
 
 button {
-  background: #0077cc;
+  background: #cc8f00;
   color: white;
   cursor: pointer;
   border: none;
@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-  background: #005fa3;
+  background: #a37500;
 }
 
 table {
@@ -63,4 +63,63 @@ tr.alerta {
 tfoot td {
   font-weight: bold;
   background: #f4f4f4;
+}
+
+/* Estilos añadir productos*/
+.container-form {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 12px;
+    
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-form input,
+.login-form select,
+.login-form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus,
+.login-form select:focus,
+.login-form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.login-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #cc8f00;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #a37500;
 }

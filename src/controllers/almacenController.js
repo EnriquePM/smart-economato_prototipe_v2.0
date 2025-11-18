@@ -13,6 +13,7 @@ const inputBusqueda = document.querySelector("#busqueda");
 const selectCategoria = document.querySelector("#categoriaSelect");
 const selectOrden = document.querySelector("#ordenSelect");
 
+
 const eventMap = [
   { selector: "#btnBuscar", event: "click", handler: onBuscar },
   { selector: "#ordenSelect", event: "change", handler: onOrdenar },
@@ -55,6 +56,7 @@ function onFiltrar() {
   productosMostrados = cat ? filtrarPorCategoria(productos, cat) : [...productos]
   renderizarTabla(productosMostrados);
 }
+
 
 function bindEvents(events) {
   for (const { selector, event, handler, options } of events) {

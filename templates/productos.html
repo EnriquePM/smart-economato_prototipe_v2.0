@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartEconomato | Añadir Producto</title>
+    <link rel="stylesheet" href="../assets/css/estilo.css" />
+    <script type="module" src="../src/controllers/almacenController.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="container-form">
+            <form id="login-form" class="login-form" action="#" method="post">
+                <label for="id">ID</label>
+                <input type="number" id="id" name="id" required />
+
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" required />
+
+                <label for="precio">Precio</label>
+                <input type="number" step="0.01" id="precio" name="precio" required />
+
+                <select id="preciU" name="precioU" required>
+                    <option value="unidad">Unidad</option>
+                    <option value="kg">Kg</option>
+                </select>
+
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" required />
+
+                <label for="stockMinimo">Stock Mínimo</label>
+                <input type="number" id="stockMinimo" name="stockMinimo" required />
+
+                <label for="categoriaId">Categoría ID</label>
+                <input type="number" id="categoriaId" name="categoriaId" required />
+
+                <label for="proveedorId">Proveedor ID</label>
+                <input type="number" id="proveedorId" name="proveedorId" required />
+
+                <label for="unidadMedida">Unidad de Medida</label>
+                <input type="text" id="unidadMedida" name="unidadMedida" required />
+
+                <label for="marca">Marca</label>
+                <input type="text" id="marca" name="marca" required />
+
+                <label for="codigoBarras">Código de Barras</label>
+                <input type="text" id="codigoBarras" name="codigoBarras" required />
+
+                <label for="fechaCaducidad">Fecha de Caducidad</label>
+                <input type="date" id="fechaCaducidad" name="fechaCaducidad" required />
+
+                <label for="alergenos">Alérgenos (separados por coma)</label>
+                <input type="text" id="alergenos" name="alergenos" />
+
+                <label for="descripcion">Descripción</label>
+                <textarea id="descripcion" name="descripcion" required></textarea>
+
+
+                <label for="activo">Activo</label>
+                <select id="activo" name="activo" required>
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+
+                <button type="submit">Guardar Producto</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
