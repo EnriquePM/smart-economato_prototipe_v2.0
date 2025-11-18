@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SmartEconomato | Añadir Producto</title>
+    <title>SmartEconomato | Introducción Producto</title>
     <link rel="stylesheet" href="../assets/css/estilo.css" />
     <script type="module" src="../src/controllers/almacenController.js"></script>
 </head>
 
 <body>
+    <h1>Smart Economato - Introducción de Productos</h1>
     <div>
         <div class="container-form">
             <form id="login-form" class="login-form" action="#" method="post">
-                <label for="id">ID</label>
-                <input type="number" id="id" name="id" required />
 
                 <label for="nombre">Nombre</label>
                 <input type="text" id="nombre" name="nombre" required />
@@ -22,6 +21,7 @@
                 <label for="precio">Precio</label>
                 <input type="number" step="0.01" id="precio" name="precio" required />
 
+                <label for="precioU">Unidad de Precio</label>
                 <select id="preciU" name="precioU" required>
                     <option value="unidad">Unidad</option>
                     <option value="kg">Kg</option>
@@ -39,8 +39,11 @@
                 <label for="proveedorId">Proveedor ID</label>
                 <input type="number" id="proveedorId" name="proveedorId" required />
 
-                <label for="unidadMedida">Unidad de Medida</label>
-                <input type="text" id="unidadMedida" name="unidadMedida" required />
+                <label for="unidadM">Unidad de Medida</label>
+                <select id="unidadM" name="unidadM" required>
+                    <option value="unidad">Unidad</option>
+                    <option value="kg">Kg</option>
+                </select>
 
                 <label for="marca">Marca</label>
                 <input type="text" id="marca" name="marca" required />
@@ -69,6 +72,9 @@
         </div>
 
     </div>
+    <a href="economato.html">
+        <button>Volver al Economato</button>
+    </a>
 </body>
 
 </html>

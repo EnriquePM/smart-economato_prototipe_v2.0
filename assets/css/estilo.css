@@ -75,8 +75,14 @@ tfoot td {
     
 }
 
+.login-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 20px;
+}
+
 .login-form label {
-    display: block;
+    display: flex;
     margin-bottom: 6px;
     font-weight: bold;
     font-size: 14px;
@@ -88,7 +94,6 @@ tfoot td {
 .login-form textarea {
     width: 100%;
     padding: 10px 12px;
-    margin-bottom: 18px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
@@ -103,11 +108,13 @@ tfoot td {
 }
 
 .login-form textarea {
+  grid-column: span 2;
     resize: vertical;
     min-height: 80px;
 }
 
 .login-form button {
+    grid-column: span 2;
     width: 100%;
     padding: 12px;
     background-color: #cc8f00;
@@ -122,4 +129,15 @@ tfoot td {
 
 .login-form button:hover {
     background-color: #a37500;
+}
+
+
+@media (max-width: 600px) {
+    .login-form {
+        grid-template-columns: 1fr;
+    }
+    .login-form textarea,
+    .login-form button {
+        grid-column: span 1; 
+    }
 }
