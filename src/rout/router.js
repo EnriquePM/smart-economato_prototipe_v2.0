@@ -1,13 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll(".sidebar a");
-  const content = document.getElementById("content");
+  const links = document.querySelectorAll(".nav a");
+  const main = document.getElementsByClassName("main");
   const menuToggle = document.getElementById("menuToggle");
-  const sidebar = document.getElementById("sidebar");
+  const nav = document.getElementById("nav");
 
   // Toggle menú para móviles/tablets
-  menuToggle.addEventListener("click", () => {
-    sidebar.classList.toggle("open");
-  });
+
 
   // Cargar contenido dinámicamente
   links.forEach(link => {
@@ -20,13 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
       e.target.classList.add("active");
 
       try {
-        const response = await fetch(`pages/${page}.html`);
+        const response = await fetch(`${page}.html`);
         if (!response.ok) throw new Error("Página no encontrada");
         const html = await response.text();
-        content.innerHTML = html;
-        sidebar.classList.remove("open"); // cerrar menú móvil
+        main.innerHTML = html;
       } catch (error) {
-        content.innerHTML = `<p style='color:red'>${error.message}</p>`;
+        main.innerHTML = `<p style='color:red'>${error.message}</p>`;
       }
     });
   });
