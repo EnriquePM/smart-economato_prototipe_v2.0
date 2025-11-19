@@ -148,3 +148,9 @@ span {
 span:hover {
   color: var(--primary-color);
 }
+
+
+.error{
+  color: #fc3e1c;
+  font-weight: bold;
+}
