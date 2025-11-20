@@ -4,22 +4,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/estilo.css">
   <link rel="stylesheet" href="../assets/css/index.css" />
-  
+
   <title>Smart-Economato</title>
 </head>
 
 <body>
   <div class="container-main">
-    <div class="head" id="header"></div>
+    <div class="head" id="header">
+      <header>
+        <h1 class="titulo">SMART-ECONOMATO</h1>
+      </header>
+      <nav class="nav" id="nav">
+        <a href="#" data-page="economato">Economato</a>
+        <a href="#" data-page="productos">Añadir Productos</a>
+      </nav>
+    </div>
     <div class="main"></div>
 
-    <div class="foot" id="footer"></div>
-    
+    <div class="foot" id="footer">
+      <footer>
+        <p>
+          Proyecto realizado por el <span class="Hopper">Grupo Hopper</span>
+        </p>
+      </footer>
+    </div>
   </div>
-   <script src="../src/utils/include.js"></script>
-  
- 
+
+  <script src="../src/rout/router.js" type="module"></script>
 </body>
 
 </html>

@@ -1,33 +1,67 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll(".nav a");
-  const main = document.querySelector(".main");
+import { inicializar as inicializarAlmacen } from '../controllers/almacenController.js';
 
 
-  // Cargar contenido dinámicamente
-  links.forEach(link => {
-    link.addEventListener("click", async (e) => {
-      e.preventDefault();
+const routes = {
+    
+    'economato': {
+        html: '../../templates/economato.html', 
+        controller: inicializarAlmacen   
+    },
+    'productos': {
+        html: '../../templates/productos.html',
+        controller: null 
+    }
+};
 
-      const page = e.target.dataset.page;
 
-      // Cambiar estado activo del menú
-      links.forEach(l => l.classList.remove("active"));
-      e.target.classList.add("active");
 
-      try {
-        const response = await fetch(`${page}.html`);
-        if (!response.ok) throw new Error("Página no encontrada");
+async function cargarContenido(pagina) {
+    const route = routes[pagina];
+    const mainContainer = document.querySelector('.main');
 
-        const html = await response.text();
-        main.innerHTML = html;
+    if (!mainContainer) {
+        console.error("El contenedor '.main' no se encontró. No se puede cargar el contenido.");
+        return;
+    }
 
-        
-      } catch (error) {
-        main.innerHTML = `<p style='color:red'>${error.message}</p>`;
-      }
+    if (route) {
+        try {
+            // 1. Obtener e insertar el HTML
+            const response = await fetch(route.html);
+            if (!response.ok) throw new Error(`Status ${response.status}`);
+            const content = await response.text();
+            
+            mainContainer.innerHTML = content;
+
+            // 2. Ejecutar el Controlador (Esto ejecuta el 'await getProducto()' y llena la tabla)
+            if (route.controller) {
+                route.controller(); // Llama a inicializarAlmacen()
+            }
+            
+        } catch (error) {
+            console.error(`Error al cargar la página o iniciar el controlador para ${pagina}:`, error);
+            mainContainer.innerHTML = `<h2>Error al cargar el contenido. Verifique el servidor y las rutas.</h2>`;
+        }
+    } else {
+        console.warn(`Página no definida: ${pagina}`);
+        mainContainer.innerHTML = `<h1>Página "${pagina}" no encontrada</h1>`;
+    }
+}
+
+
+// --- Inicialización y Manejo de Eventos ---
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Configurar los eventos de navegación
+    const navLinks = document.querySelectorAll('.nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = e.target.getAttribute('data-page');
+            cargarContenido(page);
+        });
     });
-  });
-  if (links.length > 0) {
-    links[0].click();
-  }
+
+    // 2. Cargar la página inicial (Economato) por defecto
+    cargarContenido('economato'); 
 });

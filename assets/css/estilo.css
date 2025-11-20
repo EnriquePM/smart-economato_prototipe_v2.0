@@ -1,12 +1,14 @@
 body {
   font-family: system-ui, sans-serif;
   background: #f8fafc;
-  margin: 2rem;
+  margin: 0;           
+  padding: 2rem;     
+  box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
-  color: #a37500;
+  color: #ffffff;
 }
 
 .controles {
@@ -39,7 +41,7 @@ button:hover {
 }
 
 table {
-  width: 100%;
+  width: 90%;
   border-collapse: collapse;
   background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
