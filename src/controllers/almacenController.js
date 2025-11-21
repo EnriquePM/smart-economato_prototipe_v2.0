@@ -1,84 +1,74 @@
 import { getCategoria, getProducto } from "../services/apiServices.js";
 
 import {
-  filtrarPorCategoria,
-  buscarProducto,
-  ordenarPorPrecio,
+  filtrarPorCategoria,
+  buscarProducto,
+  ordenarPorPrecio,
 } from "../utils/funciones.js"; 
 
 import { renderizarTabla, renderizarCategoria } from "../views/economato-ui.js";
 
-// Declaración global de variables (SIN ASIGNACIÓN DOM, ¡para evitar el TypeError!)
+//Variables sin inicializar 
 let inputBusqueda;
 let selectCategoria;
 let selectOrden;
-let resumen; // Asumiendo que usas esta para el <tfoot>
+let resumen;
 
+//Mapa con todos los eventos
 const eventMap = [
-  { selector: "#btnBuscar", event: "click", handler: onBuscar },
-  { selector: "#ordenSelect", event: "change", handler: onOrdenar },
-  { selector: "#btnMostrarTodos", event: "click", handler: onShowAll },
-  { selector: "#categoriaSelect", event: "change", handler: onFiltrar },
+  { selector: "#btnBuscar", event: "click", handler: onBuscar },
+  { selector: "#ordenSelect", event: "change", handler: onOrdenar },
+  { selector: "#btnMostrarTodos", event: "click", handler: onShowAll },
+  { selector: "#categoriaSelect", event: "change", handler: onFiltrar },
 ];
 
 let productos = []; 
 let categoriasMostradas;
 
-
-// 🚀 EXPORTADA: Llamada por router.js después de cargar el HTML.
+//Exportamos la función inicializar para que se cargue desde el router.js
 export async function inicializar() {
-    // 1. ASIGNACIÓN DOM: ¡Se hace aquí, ya que el HTML ya está cargado!
-    inputBusqueda = document.querySelector("#busqueda");
-    selectCategoria = document.querySelector("#categoriaSelect");
-    selectOrden = document.querySelector("#ordenSelect");
-    resumen = document.querySelector("#resumen"); // Asume que el ID está en economato.html
+    inputBusqueda = document.querySelector("#busqueda");
+    selectCategoria = document.querySelector("#categoriaSelect");
+    selectOrden = document.querySelector("#ordenSelect");
+    resumen = document.querySelector("#resumen"); 
 
-    try {
-        // 2. Carga inicial de datos de la API (Asíncrono)
-        productos = await getProducto();
-        categoriasMostradas = await getCategoria();
-
-        // 3. Renderizar y aplicar lógica
-        renderizarCategoria(categoriasMostradas);
-        aplicarFiltrosYOrden();
-        
-        // 4. Vincular Eventos
-        bindEvents(eventMap);
-    } catch (error) {
+    try {
+        //Cargamos los datos del API en productos y en categorias 
+        productos = await getProducto();
+        categoriasMostradas = await getCategoria();
+        //Cargamos las categorías y cargamos los eventos
+        renderizarCategoria(categoriasMostradas);
+        aplicarFiltrosYOrden();
+        
+        bindEvents(eventMap);
+    } catch (error) {
         console.error("Error al inicializar el controlador de almacén:", error);
         if (resumen) resumen.textContent = "Error al cargar datos de la API.";
-    }
+    }
 }
 
 
-// --- Lógica de Filtrado/Ordenado ---
-
+//Función que cargará los eventos 
 function aplicarFiltrosYOrden() {
-    // Esta función asume que los selectores (inputBusqueda, etc.) ya fueron asignados en inicializar()
     let resultado = [...productos]; 
 
-    // 1. APLICAR FILTRADO POR CATEGORÍA
     const categoriaSeleccionada = selectCategoria.value;
     if (categoriaSeleccionada) {
         resultado = filtrarPorCategoria(resultado, categoriaSeleccionada);
     }
     
-    // 2. APLICAR BÚSQUEDA
     const terminoBusqueda = inputBusqueda.value.trim();
     if (terminoBusqueda) {
         resultado = buscarProducto(resultado, terminoBusqueda);
     }
 
-    // 3. APLICAR ORDENAMIENTO
     const orden = selectOrden.value;
     resultado = ordenarPorPrecio(resultado, orden); 
 
-    // 4. RENDERIZAR
     renderizarTabla(resultado);
 }
 
 
-// --- Handlers de Eventos ---
 
 function onBuscar() {
     aplicarFiltrosYOrden();
@@ -93,7 +83,6 @@ function onFiltrar() {
 }
 
 async function onShowAll() {
-    // Resetear todos los controles
     if (inputBusqueda) inputBusqueda.value = "";
     if (selectCategoria) selectCategoria.value = "";
     if (selectOrden) selectOrden.value = "asc"; 
@@ -102,11 +91,10 @@ async function onShowAll() {
 }
 
 
-// --- Utilidades ---
 
 function bindEvents(events) {
-  for (const { selector, event, handler, options } of events) {
-    const el = document.querySelector(selector);
-    if (el) el.addEventListener(event, handler, options);
-  }
+  for (const { selector, event, handler, options } of events) {
+    const el = document.querySelector(selector);
+    if (el) el.addEventListener(event, handler, options);
+  }
 }

@@ -26,16 +26,16 @@ async function cargarContenido(pagina) {
 
     if (route) {
         try {
-            // 1. Obtener e insertar el HTML
+            //Obtener e insertar el HTML
             const response = await fetch(route.html);
             if (!response.ok) throw new Error(`Status ${response.status}`);
             const content = await response.text();
             
             mainContainer.innerHTML = content;
 
-            // 2. Ejecutar el Controlador (Esto ejecuta el 'await getProducto()' y llena la tabla)
+            //Ejecutar el Controlador (Esto ejecuta el 'await getProducto()' y llena la tabla)
             if (route.controller) {
-                route.controller(); // Llama a inicializarAlmacen()
+                route.controller(); 
             }
             
         } catch (error) {
@@ -49,10 +49,8 @@ async function cargarContenido(pagina) {
 }
 
 
-// --- Inicialización y Manejo de Eventos ---
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Configurar los eventos de navegación
+    //Configurar los eventos de navegación
     const navLinks = document.querySelectorAll('.nav a');
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
@@ -62,6 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Cargar la página inicial (Economato) por defecto
+    //Cargar la página inicial (Economato) por defecto
     cargarContenido('economato'); 
 });

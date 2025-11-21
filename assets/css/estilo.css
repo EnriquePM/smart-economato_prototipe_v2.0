@@ -29,7 +29,7 @@ button {
 }
 
 button {
-  background: #cc8f00;
+  background: #fc3e1c;
   color: white;
   cursor: pointer;
   border: none;
@@ -37,7 +37,7 @@ button {
 }
 
 button:hover {
-  background: #a37500;
+  background: #bb361e;
 }
 
 table {

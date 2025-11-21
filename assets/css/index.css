@@ -2,7 +2,7 @@
   --primary-bg-color: #ffff;
   --primary-color: #fc3e1c;
   --secondary-color: #9e9999;
-  --primary-color-hover: #db7d0f;
+  --primary-color-hover: #bb361e;
 }
 
 html,
@@ -155,4 +155,39 @@ span:hover {
 .error{
   color: #fc3e1c;
   font-weight: bold;
+}
+
+
+/* Estilos de la isnerccion de un nuevo productos */
+.login-form-productos{  
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr;
+  gap: 15px 10px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.login-form-productos textarea{
+  max-width: 250px;
+  min-height: 25px; 
+}
+.login-form-productos #activo{
+  max-height:40px;
+}
+
+@media (max-width: 768px) {
+    .login-form-productos {
+      grid-template-columns: auto 1fr;
+      max-width: 95%; 
+      padding: 10px;
+    }
+    .login-form-productos input{
+      width: 200px;
+    }
+    .login-form-productos select{
+      width: 60%;
+    }
 }
