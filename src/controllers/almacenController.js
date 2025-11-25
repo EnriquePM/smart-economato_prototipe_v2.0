@@ -1,5 +1,6 @@
 import { getCategoria, getProducto } from "../services/apiServices.js";
 
+
 import {
   filtrarPorCategoria,
   buscarProducto,

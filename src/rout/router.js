@@ -10,7 +10,12 @@ const routes = {
     'productos': {
         html: '../../templates/productos.html',
         controller: null 
+    },
+    'recepcion':{
+        html:'../../templates/recepcion.html',
+        controller: null
     }
+
 };
 
 

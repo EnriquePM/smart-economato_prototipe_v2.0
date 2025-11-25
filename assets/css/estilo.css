@@ -1,6 +1,13 @@
+:root{
+  --primary-bg-color: #ffff;
+  --primary-color: #fc3e1c;
+  --secondary-color: #9e9999;
+  --primary-color-hover: #bb361e;
+}
+
 body {
   font-family: system-ui, sans-serif;
-  background: #f8fafc;
+  background: var(--primary-bg-color);
   margin: 0;           
   padding: 2rem;     
   box-sizing: border-box;
@@ -24,12 +31,12 @@ select,
 button {
   padding: 0.6rem 1rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--secondary-color);
   font-size: 0.9rem;
 }
 
 button {
-  background: #fc3e1c;
+  background:var(--primary-color);
   color: white;
   cursor: pointer;
   border: none;
@@ -37,19 +44,19 @@ button {
 }
 
 button:hover {
-  background: #bb361e;
+  background: var(--primary-color-hover);
 }
 
 table {
   width: 90%;
   border-collapse: collapse;
-  background: white;
+  background: var(--primary-bg-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--secondary-color);
   padding: 0.5rem;
   text-align: left;
 }
@@ -71,7 +78,7 @@ tfoot td {
 .container-form {
     max-width: 500px;
     margin: 40px auto;
-    background: #ffffff;
+    background: var(--primary-bg-color);
     padding: 25px 30px;
     border-radius: 12px;
     
@@ -119,7 +126,7 @@ tfoot td {
     grid-column: span 2;
     width: 100%;
     padding: 12px;
-    background-color: #cc8f00;
+    background-color: var(--primary-color);
     border: none;
     color: white;
     font-size: 15px;
@@ -130,7 +137,7 @@ tfoot td {
 }
 
 .login-form button:hover {
-    background-color: #a37500;
+    background-color:var(--primary-color-hover);
 }
 
 
