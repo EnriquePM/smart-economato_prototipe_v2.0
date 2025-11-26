@@ -1,47 +1,18 @@
-const formulario = document.getElementById('login-form-productos');
+const API_URL='http://localhost:3000/productos'
 
-const API_URL = 'http://localhost:3000/productos'
-
-export async function addProducto() {
-    
-
-formulario.addEventListener('submit',async(e)=>{
-    e.preventDefault();
-
-    const nuevoProducto = {
-        nombre: document.getElementById('nombre').value,
-        precio: document.getElementById('precio').value,
-        precioUnidad: document.getElementById('precioU').value,
-        stock: document.getElementById('stock').value,
-        stockMinimo: document.getElementById('stockMinimo').value,
-        categoriaId: document.getElementById('categoriaId').value,
-        provedoriId : document.getElementById('proveedorId').value,
-        unidad: document.getElementById('unidadM').value,
-        marca: document.getElementById('marca').value,
-        codigoBarras: document.getElementById('codugoBarras').value,
-        fechaCaducidad: document.getElementById('fechaCaducidad').value,
-        alergenos: document.getElementById('alergenos').values,
-        descripcion: document.getElementById('descripcion').value,
-        activo: document.getElementById('activo').value
-    };
-
+export async function addProducto(nuevoProducto) {
     try{
-        const respuesta= await fetch(API_URL,{method: 'POST',
-        headers: {
-            'Content-Type': 'aplication/json'
-        },
-        body: JSON.stringify(nuevoProducto)
-    
-        });
-        if(repuesta.ok){
-            alert('Producto añadido')
-            formulario.reset();
-        }else{
-            console.error('No se ha podido añadir');
-        }
+        const respuesta = await fetch(API_URL, {
+            method: 'POST',
+            header: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(nuevoProducto)
+
+        })
+        return respuesta.ok
+    }catch(error){
+        console.error('Se ha producido un error de conexion mientras se añadía el producto: ', error)
+        return false
     }
-    catch(error) {
-        console.error('Error de red:', error);
-    }
-})
 }
