@@ -5,11 +5,11 @@ const routes = {
     
     'economato': {
         html: '../../templates/economato.html', 
-        controller: inicializarAlmacen   
+        controller: inicializarAlmacen
     },
     'productos': {
         html: '../../templates/productos.html',
-        controller: inicializarProducto 
+        controller: inicializarProducto
     },
     'recepcion':{
         html:'../../templates/recepcion.html',
@@ -40,7 +40,7 @@ async function cargarContenido(pagina) {
 
             //Ejecutar el Controlador (Esto ejecuta el 'await getProducto()' y llena la tabla)
             if (route.controller) {
-                route.controller(); 
+                route.controller();
             }
             
         } catch (error) {

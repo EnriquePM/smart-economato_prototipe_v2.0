@@ -1,6 +1,7 @@
-import { addProducto } from "../services/productoService";
+import { addProducto } from "../services/productoService.js";
 
 export async function inicializarProducto(){
+
     const formulario = document.getElementById('login-form-productos')
 
     if(formulario){
@@ -11,20 +12,19 @@ export async function inicializarProducto(){
 
     async function onProductoSubmit(e){
         e.preventDefault()
-
         const nuevoProducto = {
         nombre: document.getElementById('nombre').value,
         precio: document.getElementById('precio').value,
-        precioUnidad: document.getElementById('precioU').value,
+        precioUnitario: document.getElementById('precioU').value,
         stock: document.getElementById('stock').value,
         stockMinimo: document.getElementById('stockMinimo').value,
         categoriaId: document.getElementById('categoriaId').value,
-        provedoriId : document.getElementById('proveedorId').value,
-        unidad: document.getElementById('unidadM').value,
+        proveedorId : document.getElementById('proveedorId').value,
+        unidunidadMedida: document.getElementById('unidadM').value,
         marca: document.getElementById('marca').value,
-        codigoBarras: document.getElementById('codugoBarras').value,
+        codigoBarras: document.getElementById('codigoBarras').value,
         fechaCaducidad: document.getElementById('fechaCaducidad').value,
-        alergenos: document.getElementById('alergenos').values,
+        alergenos: document.getElementById('alergenos').value.split(',').map(s => s.trim()).filter(s => s !== ''),
         descripcion: document.getElementById('descripcion').value,
         activo: document.getElementById('activo').value
     }
@@ -37,6 +37,4 @@ export async function inicializarProducto(){
         alert('Error al añadir el producto. Revisa la consola.');
     }
     }
-
-
 }
