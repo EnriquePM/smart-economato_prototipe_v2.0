@@ -1,0 +1,15 @@
+Se conecta mediante Json server mediante una dirección URL. La estructura es: el protocolo (http), 
+en el servidor(localhost) y el puerto (3000) y el método GET.
+
+La rutas posibles:
+(API_URL)/productos 
+(API_URL)/usuarios 
+(API_URL)/categorias 
+(API_URL)/proveedores
+
+Hay que hacer una llamada href a la dirección con endpoint. 
+
+getProducto(); es la función que devuelve todo la lista completa de productos en un string json RFC 8259
+
+
+Por otro lado vamos a 
