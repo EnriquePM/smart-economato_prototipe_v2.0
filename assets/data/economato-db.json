@@ -1504,7 +1504,7 @@
       "fechaCaducidad": "2025-12-03",
       "alergenos": [],
       "descripcion": "daniel",
-      "activo": "true"
+      "activo": true
     }
   ]
 }

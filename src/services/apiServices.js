@@ -23,3 +23,15 @@ export async function getCategoria() {
     return [];
   }
 }
+
+export async function getProveedor(){
+  try{
+    const response = await fetch(`${API_URL}/proveedores`);
+    if(!response.ok) throw new Error("No se pudo obtener el proveedor");
+    return await response.json();
+  }catch(error){
+    console.error(error);
+    return[];
+  }
+
+}

@@ -1,6 +1,39 @@
 import { addProducto } from "../services/productoService.js";
+import { getCategoria, getProducto, getProveedor} from "../services/apiServices.js";
+
+async function cargarCategoria(){
+    const selectCategoria = document.getElementById("categoriaId");
+    const selectProveedor = document.getElementById("proveedorId");
+
+    const categorias = await getCategoria();
+    const proveedor = await getProveedor();
+
+    selectCategoria.innerHTML="";
+    selectProveedor.innerHTML="";
+
+    selectCategoria.innerHTML += '<option value="">-- Selecciona Categoría --</option>';
+    selectProveedor.innerHTML += '<option value="">-- Selecciona Proveedor --</option>';
+
+    categorias.forEach(c=>{
+        const option =document.createElement('option');
+        option.value = c.id;
+        option.textContent=c.nombre;
+        selectCategoria.appendChild(option);
+    })
+
+    proveedor.forEach(p => {
+        const option = document.createElement('option');
+        option.value = p.id; 
+        option.textContent = p.nombre;
+        selectProveedor.appendChild(option);
+        });
+
+}
+
 
 export async function inicializarProducto(){
+
+    await cargarCategoria();
 
     const formulario = document.getElementById('login-form-productos')
 
