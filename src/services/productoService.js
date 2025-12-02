@@ -1,6 +1,39 @@
 const API_URL='http://localhost:3000/productos'
 
+/* Método que devuelve todos los productos*/ 
+export async function getProducto() {
+  try {
+    const response = await fetch(`${API_URL}/productos`);
+    if (!response.ok) throw new Error("No se pudo obtener el producto");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 
+/* Método para añadir productos */
+export async function addStock(){
+    try{
+        const url = `${API_UTL}/${productoId}`;
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                stock: nuevoStock
+            })
+        })
+
+    }catch(error){
+        console.error(`Error al actualizar el stock de la ID ${productoId}:`,error)
+
+    }
+}
+
+
+/* Método para calcular la proxima ID del rpoducto*/ 
 async function getNextProductoId(){
     try{
         const response = await fetch(API_URL)

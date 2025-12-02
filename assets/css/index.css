@@ -191,3 +191,10 @@ span:hover {
       width: 60%;
     }
 }
+
+/* Estilos de Recepcion de Productos*/
+
+.form-recepcionn{
+  display: grid;
+  
+}
