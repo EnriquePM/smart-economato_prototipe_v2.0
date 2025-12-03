@@ -1,6 +1,6 @@
 // controllers/recepcionController.js
 
-import { getProducto, addStock } from '../services/recepcionService.js';
+import { getProducto, addStock } from '../services/productoService.js';
 
 // Variables globales
 let listaProductos = [];
@@ -132,7 +132,7 @@ function crearYAgregarFila() {
 
     // --- BLOQUE 5: CANTIDAD ---
     const divCantidad = document.createElement('div');
-    divCantidad.className = 'grupo-form ancho-completo'; // Clase personalizada si quieres que ocupe más espacio
+    divCantidad.className = 'grupo-form ancho-completo'; 
 
     const labelCantidad = document.createElement('label');
     labelCantidad.className = 'label-recepcion';
@@ -150,17 +150,16 @@ function crearYAgregarFila() {
 
     // --- BLOQUE 6: BOTÓN ELIMINAR ---
     const divBtn = document.createElement('div');
-    divBtn.className = 'contenedor-boton-eliminar'; // Clase para alinear el botón
+    divBtn.className = 'contenedor-boton-eliminar'; 
 
     const btnEliminar = document.createElement('button');
     btnEliminar.type = 'button';
-    // Clases CSS estándar, sin Tailwind
     btnEliminar.className = 'btn-eliminar-fila btn-quitar-fila'; 
     btnEliminar.textContent = 'Eliminar';
 
     divBtn.appendChild(btnEliminar);
 
-    // 3. Ensamblar todo
+    // 3. Añadir todo
     layoutDiv.appendChild(divBarras);
     layoutDiv.appendChild(divSelect);
     layoutDiv.appendChild(divPrecio);
@@ -171,9 +170,7 @@ function crearYAgregarFila() {
     // 4. Añadir layout a la fila
     filaDiv.appendChild(layoutDiv);
 
-    // -----------------------------------------------------------
     // EVENTOS
-    // -----------------------------------------------------------
 
     select.addEventListener('change', (e) => {
         onProductoSeleccionado(e.target.value, filaDiv, 'select');
@@ -202,7 +199,7 @@ function crearYAgregarFila() {
     inputBarras.focus();
 }
 
-// --- FUNCIONES AUXILIARES DE LÓGICA (Sin cambios) ---
+// --- FUNCIONES AUXILIARES DE LÓGICA  ---
 
 function onCodigoBarrasIngresado(codigo, filaElemento) {
     if (!codigo) return;
@@ -271,7 +268,7 @@ async function onRecepcionSubmit(e) {
         if (productoOriginal) {
             const stockActual = parseFloat(productoOriginal.stock) || 0;
             const nuevoStock = stockActual + item.cantidad;
-            const exito = await actualizarStock(item.id, nuevoStock);
+            const exito = await addStock(item.id, nuevoStock);
             if (!exito) errores++;
         }
     }

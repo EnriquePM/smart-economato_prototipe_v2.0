@@ -1,8 +1,14 @@
 :root {
-  --primary-bg-color: #ffff;
+  --primary-bg-color: #ffffff;
   --primary-color: #fc3e1c;
   --secondary-color: #9e9999;
   --primary-color-hover: #bb361e;
+  --text-color: #333;
+  --border-radius: 8px;
+}
+
+* {
+  box-sizing: border-box; 
 }
 
 html,
@@ -10,38 +16,44 @@ body {
   height: 100vh;
   margin: 0;
   width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
 }
 
-/* Estilos login*/
+/* --- ESTILOS LOGIN --- */
 .container-main-log {
   background: var(--secondary-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  margin: 0;
+  min-height: 100vh; 
+  padding: 20px;
 }
 
-/*Login */
 .login-container {
   background-color: var(--primary-bg-color);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); /* Añade un sombreado */
   border: 2px solid var(--primary-color);
   border-radius: 20px;
   padding: 40px;
-  width: 320px;
+  width: 100%;            
+  max-width: 350px;       
   text-align: center;
-  color: black;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
 }
 
-/* Título */
 .login-container h1 {
   margin-bottom: 30px;
   font-size: 1.8rem;
   letter-spacing: 1px;
+  color: var(--text-color);
 }
 
-/* Formulario */
+#titulo {
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -51,150 +63,222 @@ body {
 .login-form label {
   text-align: left;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .login-form input {
-  padding: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
   outline: none;
+  transition: border-color 0.3s;
+}
+
+.login-form input:focus {
+  border-color: var(--primary-color);
 }
 
 .login-form button {
-  margin-top: 10px;
+  margin-top: 15px;
   background-color: var(--primary-color);
   color: white;
   border: none;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 12px;
+  border-radius: var(--border-radius);
   font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .login-form button:hover {
   background-color: var(--primary-color-hover);
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 
-#titulo {
-  color: var(--primary-color);
-  transition: color 0.3s ease;
-}
-
-/*////////////////////////////////////////////////////////*/
-
-/* Estilos MAIN*/
+/* --- ESTILOS MAIN LAYOUT --- */
 .container-main {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
 }
+
 .main {
   width: 100%;
-  min-height: 0;        
-  padding: 20px;       
-  overflow: auto;
-  box-sizing: border-box;   
+  padding: 20px;
+  overflow-y: auto; /* Scroll solo en el contenido si es necesario */
+  background-color: #f9f9f9; /* Fondo suave para diferenciar del header */
 }
 
-/* Header */
+/* HEADER */
 .head {
   background-color: var(--primary-color);
   color: white;
-  display: grid;
-  justify-items: center;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 10;
 }
 
-/* La navbar */
+.head header {
+  padding: 15px 0;
+}
+
+.head h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+/* NAVBAR RESPONSIVE */
 nav {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
-  justify-content: center;
   background-color: var(--secondary-color);
   width: 100%;
+  padding: 10px;
+  /* Flexbox es mejor que Grid aquí para adaptarse */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; 
   gap: 10px;
-  padding: 10px 0;
 }
 
 nav a {
   color: white;
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 8px 16px;
+  border-radius: 20px; /* Botones más redondeados tipo 'pill' */
   text-decoration: none;
-  transition: transform 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Evita que el texto del botón se rompa */
 }
 
 nav a:hover {
-  transform: scale(1.2);
-  color: var(--primary-color-hover);
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;
+  transform: translateY(-2px);
 }
 
-/* Main o parte principal*/
+nav a.active { /* Clase opcional si quieres marcar la página actual */
+  background-color: var(--primary-color);
+}
 
-
-/* Footer del proyecto*/
+/* FOOTER */
 .foot {
   background-color: var(--secondary-color);
   color: white;
   text-align: center;
-  display: grid;
-  justify-items: center;
-  align-items: center;
-  padding: 10px;
-}
-.foot p:hover {
-  color: #fff;
-}
-span {
-  color: #ffff;
-  transition: color 0.2s ease;
-}
-span:hover {
-  color: var(--primary-color);
+  padding: 15px;
+  font-size: 0.9rem;
 }
 
-
-.error{
-  color: #fc3e1c;
+.foot span {
   font-weight: bold;
+  cursor: pointer;
 }
 
-
-/* Estilos de la isnerccion de un nuevo productos */
-.login-form-productos{  
+/* --- FORMULARIO DE AÑADIR PRODUCTOS (RESPONSIVE MEJORADO) --- */
+.login-form-productos {
+  background-color: #fff;
+  /* Grid de escritorio: Label Input | Label Input */
   display: grid;
-  grid-template-columns: auto 1fr auto 1fr;
-  gap: 15px 10px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-
-.login-form-productos textarea{
-  max-width: 250px;
-  min-height: 25px; 
-}
-.login-form-productos #activo{
-  max-height:40px;
-}
-
-@media (max-width: 768px) {
-    .login-form-productos {
-      grid-template-columns: auto 1fr;
-      max-width: 95%; 
-      padding: 10px;
-    }
-    .login-form-productos input{
-      width: 200px;
-    }
-    .login-form-productos select{
-      width: 60%;
-    }
-}
-
-/* Estilos de Recepcion de Productos*/
-
-.form-recepcionn{
-  display: grid;
+  grid-template-columns: auto 1fr auto 1fr; 
+  gap: 20px 15px; /* Espaciado vertical 20px, horizontal 15px */
+  align-items: center;
   
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.login-form-productos label {
+  font-weight: 600;
+  color: #555;
+  text-align: right; /* Etiquetas alineadas al input */
+}
+
+.login-form-productos input,
+.login-form-productos select,
+.login-form-productos textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.login-form-productos input:focus,
+.login-form-productos select:focus,
+.login-form-productos textarea:focus {
+  border-color: var(--primary-color);
+}
+
+.login-form-productos textarea {
+  resize: vertical; /* Permite estirar solo verticalmente */
+}
+
+/* Botón Guardar ocupa toda la fila al final */
+.login-form-productos button[type="submit"] {
+  grid-column: 1 / -1; /* Ocupa todas las columnas */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.login-form-productos button[type="submit"]:hover {
+  background-color: var(--primary-color-hover);
+}
+
+/* --- MEDIA QUERIES (ADAPTACIÓN MÓVIL) --- */
+
+/* Tablet (menos de 900px) */
+@media (max-width: 900px) {
+  .login-form-productos {
+    /* Cambiamos a 1 columna de pares: Label Input */
+    grid-template-columns: auto 1fr;
+    max-width: 100%;
+  }
+}
+
+/* Móvil (menos de 600px) */
+@media (max-width: 600px) {
+  .login-form-productos {
+    /* En móviles, todo en una sola columna vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .login-form-productos label {
+    text-align: left; /* Etiquetas a la izquierda en móvil */
+    margin-top: 5px;
+  }
+  
+  /* Navbar apilada si es necesario, o scroll horizontal */
+  nav {
+    gap: 5px;
+  }
+  
+  nav a {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+}
+
+/* Utilidades */
+.error {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 0.9rem;
 }

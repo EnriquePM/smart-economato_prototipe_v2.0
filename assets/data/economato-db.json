@@ -1488,23 +1488,6 @@
         "id": 3,
         "nombre": "Carnicerías Selectas del Norte"
       }
-    },
-    {
-      "id": "51",
-      "nombre": "daniel",
-      "precio": "3",
-      "precioUnitario": "unidad",
-      "stock": "5",
-      "stockMinimo": "2",
-      "categoriaId": "1",
-      "proveedorId": "1",
-      "unidunidadMedida": "unidad",
-      "marca": "daniel",
-      "codigoBarras": "12332112",
-      "fechaCaducidad": "2025-12-03",
-      "alergenos": [],
-      "descripcion": "daniel",
-      "activo": true
     }
   ]
 }

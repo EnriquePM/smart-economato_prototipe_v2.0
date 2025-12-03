@@ -1,7 +1,16 @@
 const API_URL =
   'http://localhost:3000'
 
-
+export async function getProducto() {
+  try {
+    const response = await fetch(`${API_URL}/productos`);
+    if (!response.ok) throw new Error("No se pudo obtener el producto");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
 
 export async function getCategoria() {
   try {

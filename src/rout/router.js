@@ -1,5 +1,6 @@
 import { inicializar as inicializarAlmacen } from '../controllers/almacenController.js';
 import { inicializarProducto } from '../controllers/productoController.js';
+import { inicializar } from '../controllers/recepcionController.js';
 
 const routes = {
     
@@ -13,7 +14,7 @@ const routes = {
     },
     'recepcion':{
         html:'../../templates/recepcion.html',
-        controller: null
+        controller: inicializar
     }
 
 };

@@ -1,4 +1,4 @@
-const API_URL='http://localhost:3000/productos'
+const API_URL='http://localhost:3000'
 
 /* Método que devuelve todos los productos*/ 
 export async function getProducto() {
@@ -13,9 +13,9 @@ export async function getProducto() {
 }
 
 /* Método para añadir productos */
-export async function addStock(){
+export async function addStock(productoId){
     try{
-        const url = `${API_UTL}/${productoId}`;
+        const url = `${API_URL}/${productoId}`;
         const response = await fetch(url, {
             method: 'PATCH',
             headers: {

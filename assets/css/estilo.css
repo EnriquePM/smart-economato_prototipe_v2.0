@@ -1,152 +1,244 @@
-:root{
-  --primary-bg-color: #ffff;
+:root {
+  --primary-bg-color: #ffffff;
   --primary-color: #fc3e1c;
   --secondary-color: #9e9999;
   --primary-color-hover: #bb361e;
+  --text-color: #333;
+  --table-stripe: #f9f9f9;
+  --border-radius: 8px;
 }
 
-body {
-  font-family: system-ui, sans-serif;
-  background: var(--primary-bg-color);
-  margin: 0;           
-  padding: 2rem;     
-  box-sizing: border-box;
-}
+/* -----------------------------------------------------------
+   ESTILOS GENERALES (CONTROLES Y TEXTO)
+----------------------------------------------------------- */
 
-h1 {
+/* Ajuste para títulos dentro de las vistas */
+h1, h2 {
   text-align: center;
-  color: #ffffff;
+  color: var(--primary-color); /* Cambiado de blanco a color primario para mejor contraste en fondo blanco */
+  margin-bottom: 1.5rem;
 }
 
+/* Barra de controles (Buscador, filtros, botones) */
 .controles {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 10px;
   justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+/* Inputs y Selects generales */
 input,
-select,
-button {
-  padding: 0.6rem 1rem;
+select {
+  padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid var(--secondary-color);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+input:focus,
+select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(252, 62, 28, 0.1);
+}
+
+/* Botones generales */
 button {
-  background:var(--primary-color);
-  color: white;
-  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 6px;
   border: none;
-  transition: 0.2s;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 button:hover {
-  background: var(--primary-color-hover);
+  background-color: var(--primary-color-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* -----------------------------------------------------------
+   TABLAS (ECONOMATO)
+----------------------------------------------------------- */
+
+/* Contenedor para hacer la tabla responsive (scroll horizontal) */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 table {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
   background: var(--primary-bg-color);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  font-size: 0.95rem;
 }
 
-th,
-td {
-  border: 1px solid var(--secondary-color);
-  padding: 0.5rem;
+/* Cabecera de la tabla */
+thead th {
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 15px;
   text-align: left;
+  font-weight: 600;
+  white-space: nowrap; /* Evita que los títulos se rompan */
+  position: sticky; /* Cabecera fija al hacer scroll vertical */
+  top: 0;
+  z-index: 5;
 }
 
-th {
-  background: #e0e0e0;
+/* Celdas */
+td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  color: var(--text-color);
 }
 
-tr.alerta {
-  background: #ffe4e1;
+/* Filas alternas y hover */
+tbody tr:hover {
+  background-color: #f0f0f0; /* Efecto hover suave */
 }
 
+/* Estado de alerta (Stock bajo) */
+tbody tr.alerta {
+  background-color: #fff0f0;
+  border-left: 4px solid var(--primary-color);
+}
+
+tbody tr.alerta td {
+  color: #c0392b;
+  font-weight: 500;
+}
+
+/* Pie de tabla */
 tfoot td {
   font-weight: bold;
-  background: #f4f4f4;
+  background-color: #f8f8f8;
+  border-top: 2px solid var(--secondary-color);
+  padding: 15px;
+  text-align: right;
+  color: var(--primary-color);
 }
 
-/* Estilos añadir productos*/
+/* -----------------------------------------------------------
+   FORMULARIOS (AÑADIR PRODUCTOS)
+----------------------------------------------------------- */
+
 .container-form {
-    max-width: 500px;
-    margin: 40px auto;
-    background: var(--primary-bg-color);
-    padding: 25px 30px;
-    border-radius: 12px;
-    
+  max-width: 800px; /* Un poco más ancho para respirar */
+  margin: 20px auto;
+  background: var(--primary-bg-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e0e0e0;
 }
 
-.login-form{
+/* Reutilizamos la clase .login-form pero mejorada para Grid */
+.login-form {
   display: grid;
   grid-template-columns: 1fr 1fr; 
   gap: 20px;
 }
 
+/* Labels dentro del form */
 .login-form label {
-    display: flex;
-    margin-bottom: 6px;
-    font-weight: bold;
-    font-size: 14px;
-    color: #333;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
 }
 
+/* Inputs específicos del form */
 .login-form input,
 .login-form select,
 .login-form textarea {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: #fff;
 }
 
+/* Foco con el color corporativo */
 .login-form input:focus,
 .login-form select:focus,
 .login-form textarea:focus {
-    border-color: #007bff;
-    outline: none;
+  border-color: var(--primary-color);
+  outline: none;
 }
 
+/* Textarea que ocupe todo el ancho */
 .login-form textarea {
   grid-column: span 2;
-    resize: vertical;
-    min-height: 80px;
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
 }
 
+/* Botón de acción principal */
 .login-form button {
-    grid-column: span 2;
-    width: 100%;
-    padding: 12px;
-    background-color: var(--primary-color);
-    border: none;
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  grid-column: span 2;
+  width: 100%;
+  margin-top: 10px;
+  padding: 15px;
+  background-color: var(--primary-color);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .login-form button:hover {
-    background-color:var(--primary-color-hover);
+  background-color: var(--primary-color-hover);
+  box-shadow: 0 5px 15px rgba(252, 62, 28, 0.3);
 }
 
+/* -----------------------------------------------------------
+   RESPONSIVE
+----------------------------------------------------------- */
 
-@media (max-width: 600px) {
-    .login-form {
-        grid-template-columns: 1fr;
-    }
-    .login-form textarea,
-    .login-form button {
-        grid-column: span 1; 
-    }
+@media (max-width: 768px) {
+  /* En tablets/móviles, el formulario pasa a 1 columna */
+  .login-form {
+    grid-template-columns: 1fr;
+  }
+
+  .login-form textarea,
+  .login-form button {
+    grid-column: span 1; 
+  }
+  
+  /* Ajuste de controles */
+  .controles {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .controles input,
+  .controles select,
+  .controles button {
+    width: 100%;
+  }
+
+  /* Tabla: Asegurar scroll horizontal */
+  table {
+    min-width: 600px; /* Fuerza el scroll si es muy estrecha */
+  }
 }
