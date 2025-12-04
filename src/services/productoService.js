@@ -13,9 +13,9 @@ export async function getProducto() {
 }
 
 /* Método para añadir productos */
-export async function addStock(productoId){
+export async function addStock(productoId, nuevoStock){
     try{
-        const url = `${API_URL}/${productoId}`;
+        const url = `${API_URL}/productos/${productoId}`;
         const response = await fetch(url, {
             method: 'PATCH',
             headers: {
@@ -25,10 +25,11 @@ export async function addStock(productoId){
                 stock: nuevoStock
             })
         })
+        return response.ok
 
     }catch(error){
         console.error(`Error al actualizar el stock de la ID ${productoId}:`,error)
-
+        return false
     }
 }
 

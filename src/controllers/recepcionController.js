@@ -274,10 +274,10 @@ async function onRecepcionSubmit(e) {
     }
 
     if (errores === 0) {
-        alert("✅ Stock actualizado.");
+        alert("Stock actualizado.");
         formularioPrincipal.reset();
         inicializar();
     } else {
-        alert(`⚠️ Errores en ${errores} productos.`);
+        alert(`Errores en ${errores} productos.`);
     }
 }
