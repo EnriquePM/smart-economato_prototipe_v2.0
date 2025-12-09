@@ -202,7 +202,7 @@
       "nombre": "Solomillo de Ternera",
       "precio": 24.9,
       "precioUnitario": "kg",
-      "stock": 35,
+      "stock": 40.01,
       "stockMinimo": 12,
       "categoriaId": 3,
       "proveedorId": 3,
@@ -254,7 +254,7 @@
       "nombre": "Salmón Fresco",
       "precio": 18.5,
       "precioUnitario": "kg",
-      "stock": 28,
+      "stock": 31,
       "stockMinimo": 10,
       "categoriaId": 5,
       "proveedorId": 4,
@@ -282,7 +282,7 @@
       "nombre": "Gambas Blancas",
       "precio": 26.4,
       "precioUnitario": "kg",
-      "stock": 18,
+      "stock": 22,
       "stockMinimo": 8,
       "categoriaId": 6,
       "proveedorId": 4,
@@ -338,7 +338,7 @@
       "nombre": "Queso Manchego",
       "precio": 16.8,
       "precioUnitario": "kg",
-      "stock": 42,
+      "stock": 75,
       "stockMinimo": 15,
       "categoriaId": 8,
       "proveedorId": 5,
@@ -1487,6 +1487,31 @@
       "proveedor": {
         "id": 3,
         "nombre": "Carnicerías Selectas del Norte"
+      }
+    },
+    {
+      "id": "51",
+      "nombre": "Polvorón",
+      "precio": 2,
+      "precioUnitario": "unidad",
+      "stock": 2234,
+      "stockMinimo": 2,
+      "categoriaId": 1,
+      "proveedorId": 1,
+      "unidunidadMedida": "unidad",
+      "marca": "Prueba",
+      "codigoBarras": "12432353243543453254",
+      "fechaCaducidad": "2025-12-26",
+      "alergenos": [],
+      "descripcion": "",
+      "activo": true,
+      "categoria": {
+        "id": 1,
+        "nombre": "Frutas Frescas"
+      },
+      "proveedor": {
+        "id": 1,
+        "nombre": "Distribuciones Alimentarias Mediterráneo"
       }
     }
   ]

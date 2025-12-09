@@ -1,27 +1,50 @@
 import { inicializar as inicializarAlmacen } from '../controllers/almacenController.js';
 import { inicializarProducto } from '../controllers/productoController.js';
 import { inicializar } from '../controllers/recepcionController.js';
+import { inicializar as inicializarLogin } from '../controllers/loginController.js';
+import { isAuthenticated, logout } from '../services/authService.js';
+
 
 const routes = {
-    
+    'login': {
+        html: './login.html',
+        controller: inicializarLogin
+    },
     'economato': {
-        html: '../../templates/economato.html', 
+        html: './economato.html', 
         controller: inicializarAlmacen
     },
     'productos': {
-        html: '../../templates/productos.html',
+        html: './productos.html',
         controller: inicializarProducto
     },
     'recepcion':{
-        html:'../../templates/recepcion.html',
+        html:'./recepcion.html',
         controller: inicializar
     }
 
 };
 
-
-
 async function cargarContenido(pagina) {
+    // Seguridad del Login
+    const estaLogueado = isAuthenticated();
+    //No está logueado e intentar acceder al contenido
+    if (!estaLogueado && pagina !== 'login') {
+        console.warn("Usuario no autenticado. Redirigiendo a Login...");
+        pagina = 'login'; 
+        window.location.hash = '#login';
+    }
+    //Está logueado e intenta acceder al login
+    else if (estaLogueado && pagina === 'login') {
+        pagina = 'economato';
+        window.location.hash = '#economato';
+    }
+        const nav = document.getElementById('nav');
+    //Gestión de la Navbar en función del login
+    if (nav) {
+        nav.style.display = estaLogueado ? '' : 'none'; 
+    }
+
     const route = routes[pagina];
     const mainContainer = document.querySelector('.main');
 
@@ -62,6 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const page = e.target.getAttribute('data-page');
+            if (page === 'logout'){
+                logout();
+                window.location.hash="#login";
+                window.location.reload();
+                return;
+            }
             cargarContenido(page);
         });
     });
@@ -69,3 +98,4 @@ document.addEventListener('DOMContentLoaded', () => {
     //Cargar la página inicial (Economato) por defecto
     cargarContenido('economato'); 
 });
+

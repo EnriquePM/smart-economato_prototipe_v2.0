@@ -33,7 +33,31 @@ export async function inicializar() {
 
     } catch (error) {
         console.error("Error inicializando:", error);
+        mostrarNotificacion("Error al conectar con el servidor.", "error");
     }
+}
+/* Función para las notis */
+function mostrarNotificacion(mensaje, tipo) {
+    if (!alertaDiv) return;
+
+    // Limpiar timeout por si exista, así evitamos que la nueva alerta salga mal
+    if (alertaTimeout) clearTimeout(alertaTimeout);
+
+    alertaDiv.textContent = mensaje;
+    alertaDiv.style.display = 'block';
+
+    // Asignar clase para el estilo (colores)
+    if (tipo === 'exito') {
+        alertaDiv.className = 'alerta-exito';
+    } else {
+        alertaDiv.className = 'alerta-error';
+    }
+
+    // Ocultar automáticamente después de 4 segundos
+    alertaTimeout = setTimeout(() => {
+        alertaDiv.style.display = 'none';
+        alertaDiv.className = '';
+    }, 2000);
 }
 
 /*Crear cada parte del formulario*/
@@ -240,44 +264,65 @@ function limpiarFila(filaElemento) {
 
 async function onRecepcionSubmit(e) {
     e.preventDefault();
-    
-    const filas = Array.from(contenedor.children);
-    const actualizaciones = [];
 
-    filas.forEach(fila => {
-        const idInput = fila.querySelector('.producto-id-input');
-        const cantInput = fila.querySelector('.cantidad-recibida-input');
-        
-        if (idInput && cantInput) {
-            const id = idInput.value;
-            const cantidad = parseFloat(cantInput.value);
-            if (id && cantidad > 0) {
-                actualizaciones.push({ id, cantidad });
+    const btnSubmit = formularioPrincipal.querySelector('button[type="submit"]');
+    if (btnSubmit) btnSubmit.disabled = true;
+    
+    try {
+        const filas = Array.from(contenedor.children);
+        const actualizaciones = [];
+
+        filas.forEach(fila => {
+            const idInput = fila.querySelector('.producto-id-input');
+            const cantInput = fila.querySelector('.cantidad-recibida-input');
+            
+            if (idInput && cantInput) {
+                const id = idInput.value;
+                const cantidad = parseFloat(cantInput.value);
+                if (id && cantidad > 0) {
+                    actualizaciones.push({ id, cantidad });
+                }
+            }
+        });
+
+        if (actualizaciones.length === 0) {
+            mostrarNotificacion("No hay datos válidos. Seleccione productos y cantidades.", "error");
+            if (btnSubmit) btnSubmit.disabled = false;
+            return;
+        }
+
+        let errores = 0;
+        for (const item of actualizaciones) {
+            const productoOriginal = listaProductos.find(p => p.id == item.id);
+            if (productoOriginal) {
+                const stockActual = parseFloat(productoOriginal.stock) || 0;
+                const nuevoStock = stockActual + item.cantidad;
+                const exito = await addStock(item.id, nuevoStock);
+                if (!exito) errores++;
             }
         }
-    });
 
-    if (actualizaciones.length === 0) {
-        alert("No hay datos válidos.");
-        return;
-    }
-
-    let errores = 0;
-    for (const item of actualizaciones) {
-        const productoOriginal = listaProductos.find(p => p.id == item.id);
-        if (productoOriginal) {
-            const stockActual = parseFloat(productoOriginal.stock) || 0;
-            const nuevoStock = stockActual + item.cantidad;
-            const exito = await addStock(item.id, nuevoStock);
-            if (!exito) errores++;
+        if (errores === 0) {
+            mostrarNotificacion("Stock actualizado correctamente.", "exito");
+            
+            // Contador de 2 segundos antes de devolver a la ventana principal
+            setTimeout(() => {
+                formularioPrincipal.reset();
+                contenedor.innerHTML = ''; 
+                crearYAgregarFila();
+                
+                
+                if (btnSubmit) btnSubmit.disabled = false;
+            }, 2000);
+            
+        } else {
+            mostrarNotificacion(`Errores en ${errores} productos. Revise consola.`, "error");
+            if (btnSubmit) btnSubmit.disabled = false;
         }
-    }
 
-    if (errores === 0) {
-        alert("Stock actualizado.");
-        formularioPrincipal.reset();
-        inicializar();
-    } else {
-        alert(`Errores en ${errores} productos.`);
+    } catch (error) {
+        console.error("Error en submit:", error);
+        mostrarNotificacion("Ocurrió un error inesperado al procesar.", "error");
+        if (btnSubmit) btnSubmit.disabled = false;
     }
 }

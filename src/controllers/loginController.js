@@ -1,15 +1,14 @@
-import { AuthService } from "../services/authService.js";
+import { login } from "../services/authService.js";
 import { LoginUI } from "../views/login-ui.js";
 
-
-document.addEventListener("DOMContentLoaded",() =>{
-
+export function inicializar(){
 
     const form = document.getElementById("login-form")
+    if (!form) return;
 
     form.addEventListener("submit", async (event) =>{
-
         event.preventDefault()
+
         const username = document.getElementById("username").value
         const password = document.getElementById("password").value
 
@@ -18,24 +17,26 @@ document.addEventListener("DOMContentLoaded",() =>{
             if(!username || !password){
                 throw new Error("El usuario y la constraseña son obligatorios")
             }
-            const user = await AuthService.login(username,password)
-            if(user){
-            window.location.href="./templates/main.html"
+            const correcto = await login(username,password)
+            if(correcto){
+            window.location.hash="#economato"
+            window.location.reload();
             }else{
                 throw new Error("El usuario y/o la constraseña son incorrectos")
             }
             
 
-        }catch(error){
-            //Algo para modificar la interfaz y mostrar el error
-            LoginUI.showMessage(error.message, "error")
+        }catch (error) {
+            // Manejo de errores visual usando tu clase LoginUI
+            if (LoginUI && typeof LoginUI.showMessage === 'function') {
+                LoginUI.showMessage(error.message, "error");
+            } else {
+                console.error(error);
+                alert(error.message);
+            }
         }
 
     } 
 
     )
-} 
-
-
-
-)
+}

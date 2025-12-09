@@ -8,14 +8,12 @@
   --border-radius: 8px;
 }
 
-/* -----------------------------------------------------------
-   ESTILOS GENERALES (CONTROLES Y TEXTO)
------------------------------------------------------------ */
+/* ESTILOS GENERALES (CONTROLES Y TEXTO)*/
 
 /* Ajuste para títulos dentro de las vistas */
 h1, h2 {
   text-align: center;
-  color: var(--primary-color); /* Cambiado de blanco a color primario para mejor contraste en fondo blanco */
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
 }
 
@@ -69,9 +67,7 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* -----------------------------------------------------------
-   TABLAS (ECONOMATO)
------------------------------------------------------------ */
+/* TABLAS (ECONOMATO)*/
 
 /* Contenedor para hacer la tabla responsive (scroll horizontal) */
 .table-responsive {
@@ -95,8 +91,8 @@ thead th {
   padding: 15px;
   text-align: left;
   font-weight: 600;
-  white-space: nowrap; /* Evita que los títulos se rompan */
-  position: sticky; /* Cabecera fija al hacer scroll vertical */
+  white-space: nowrap; 
+  position: sticky; 
   top: 0;
   z-index: 5;
 }
@@ -110,7 +106,7 @@ td {
 
 /* Filas alternas y hover */
 tbody tr:hover {
-  background-color: #f0f0f0; /* Efecto hover suave */
+  background-color: #f0f0f0; 
 }
 
 /* Estado de alerta (Stock bajo) */
@@ -134,12 +130,10 @@ tfoot td {
   color: var(--primary-color);
 }
 
-/* -----------------------------------------------------------
-   FORMULARIOS (AÑADIR PRODUCTOS)
------------------------------------------------------------ */
+/* FORMULARIOS (AÑADIR PRODUCTOS)*/
 
 .container-form {
-  max-width: 800px; /* Un poco más ancho para respirar */
+  max-width: 800px; 
   margin: 20px auto;
   background: var(--primary-bg-color);
   padding: 30px;
@@ -148,7 +142,6 @@ tfoot td {
   border: 1px solid #e0e0e0;
 }
 
-/* Reutilizamos la clase .login-form pero mejorada para Grid */
 .login-form {
   display: grid;
   grid-template-columns: 1fr 1fr; 
@@ -177,7 +170,6 @@ tfoot td {
   background-color: #fff;
 }
 
-/* Foco con el color corporativo */
 .login-form input:focus,
 .login-form select:focus,
 .login-form textarea:focus {
@@ -210,9 +202,7 @@ tfoot td {
   box-shadow: 0 5px 15px rgba(252, 62, 28, 0.3);
 }
 
-/* -----------------------------------------------------------
-   RESPONSIVE
------------------------------------------------------------ */
+/* RESPONSIVE */
 
 @media (max-width: 768px) {
   /* En tablets/móviles, el formulario pasa a 1 columna */
@@ -239,6 +229,6 @@ tfoot td {
 
   /* Tabla: Asegurar scroll horizontal */
   table {
-    min-width: 600px; /* Fuerza el scroll si es muy estrecha */
+    min-width: 600px; 
   }
 }

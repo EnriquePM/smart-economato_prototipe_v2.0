@@ -37,7 +37,7 @@ export async function addStock(productoId, nuevoStock){
 /* Método para calcular la proxima ID del rpoducto*/ 
 async function getNextProductoId(){
     try{
-        const response = await fetch(API_URL)
+        const response = await fetch(`${API_URL}/productos`)
         if(!response.ok){
             throw new Error('No se puede obtener los productos para calcular la proxima Id')
 
@@ -70,9 +70,9 @@ export async function addProducto(nuevoProducto) {
         ...nuevoProducto 
     }
     try{
-        const respuesta = await fetch(API_URL, {
+        const respuesta = await fetch(`${API_URL}/productos`, {
             method: 'POST',
-            header: {
+            headers: { 
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(productoConId)

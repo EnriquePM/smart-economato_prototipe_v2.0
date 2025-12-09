@@ -64,7 +64,10 @@ function aplicarFiltrosYOrden() {
     }
 
     const orden = selectOrden.value;
-    resultado = ordenarPorPrecio(resultado, orden); 
+    if(orden !== "default"){
+        resultado = ordenarPorPrecio(resultado, orden); 
+    }
+    
 
     renderizarTabla(resultado);
 }
@@ -86,7 +89,7 @@ function onFiltrar() {
 async function onShowAll() {
     if (inputBusqueda) inputBusqueda.value = "";
     if (selectCategoria) selectCategoria.value = "";
-    if (selectOrden) selectOrden.value = "asc"; 
+    if (selectOrden) selectOrden.value = "default"; 
 
     aplicarFiltrosYOrden();
 }
