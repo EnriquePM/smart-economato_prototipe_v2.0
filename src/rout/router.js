@@ -3,7 +3,7 @@ import { inicializarProducto } from '../controllers/productoController.js';
 import { inicializar } from '../controllers/recepcionController.js';
 import { isAuthenticated, logout } from '../services/authService.js';
 
-
+//Añadimos aqui las diferentes rutas de las pantallas así como sus controladores
 const routes = {
     'economato': {
         html: 'templates/economato.html', 
@@ -20,7 +20,7 @@ const routes = {
 };
 
 export async function router() {
-    
+    //Verificamos si el usuario está autenticado
     const estaLogueado = isAuthenticated();
 
     if (!estaLogueado) {
@@ -43,12 +43,12 @@ export async function router() {
     if (nav) {
         nav.style.display = 'flex'; 
     }
-
+// Obtener el contenedor principal donde se cargan las vistas
     const route = routes[hash];
     const mainContainer = document.querySelector('.main');
 
     if (!mainContainer) return;
-
+// Cargar la vista correspondiente
     if (route) {
         try {
             const response = await fetch(route.html);
@@ -60,7 +60,7 @@ export async function router() {
             if (route.controller && typeof route.controller === 'function') {
                 await route.controller();
             }
-
+// Manejo de errores de carga
         } catch (error) {
             console.error(`Error cargando vista ${hash}:`, error);
             mainContainer.innerHTML = `<h2 class="error-msg">Error al cargar la sección.</h2>`;
@@ -70,6 +70,6 @@ export async function router() {
     }
 }
 
-
+// Eventos para cargar la ruta adecuada al iniciar y al cambiar el hash
 window.addEventListener('load', router);
 window.addEventListener('hashchange', router);
