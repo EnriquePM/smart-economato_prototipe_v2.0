@@ -23,17 +23,57 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 ## 📁 Estructura del Proyecto
 
 
-├── assets/
-│ ├── css/
-│ └── data/
-├── doc/
-├── src/
-│ ├── controllers/
-│ ├── rout/
-│ ├── services/
-│ ├── utils/
-│ └── views/
-└── templates/
+│   login.html
+│   main.html
+│   README.md
+│
+├───.vscode
+│       launch.json
+│
+├───assets
+│   ├───css
+│   │       index.css
+│   │       recepcion.css
+│   │       tabla.css
+│   │
+│   ├───data
+│   │       economato-db.json
+│   │
+│   └───doc
+│           API.txt
+│
+├───src
+│   ├───controllers
+│   │       almacenController.js
+│   │       loginController.js
+│   │       productoController.js
+│   │       recepcionController.js
+│   │
+│   ├───models
+│   │       categoria.js
+│   │       producto.js
+│   │       proveedor.js
+│   │
+│   ├───rout
+│   │       router.js
+│   │
+│   ├───services
+│   │       apiServices.js
+│   │       authService.js
+│   │       productoService.js
+│   │
+│   ├───utils
+│   │       funciones.js
+│   │       include.js
+│   │
+│   └───views
+│           economato-ui.js
+│           login-ui.js
+│
+└───templates
+        economato.html
+        productos.html
+        recepcion.html
 
 
 
@@ -44,6 +84,7 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 ## 🧪 Puntos a mejorar en el futuro
 - Añadir roles de usuarios, creación de usuarios.
 - Creación de Pedidos y comparación pedidos con recepción.
+
 
 
 
