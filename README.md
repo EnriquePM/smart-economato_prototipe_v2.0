@@ -22,7 +22,7 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 
 ## 📁 Estructura del Proyecto
 
-
+```
 │   login.html
 │   main.html
 │   README.md
@@ -74,7 +74,7 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
         economato.html
         productos.html
         recepcion.html
-
+```
 
 
 ## 🚀 Puntos a destacar del código
@@ -84,6 +84,7 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 ## 🧪 Puntos a mejorar en el futuro
 - Añadir roles de usuarios, creación de usuarios.
 - Creación de Pedidos y comparación pedidos con recepción.
+
 
 
 
