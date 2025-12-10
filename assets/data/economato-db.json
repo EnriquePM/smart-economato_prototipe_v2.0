@@ -1513,6 +1513,31 @@
         "id": 1,
         "nombre": "Distribuciones Alimentarias Mediterráneo"
       }
+    },
+    {
+      "id": "52",
+      "nombre": "Macarrones",
+      "precio": 1,
+      "precioUnitario": "unidad",
+      "stock": 4,
+      "stockMinimo": 1,
+      "categoriaId": 12,
+      "proveedorId": 1,
+      "unidunidadMedida": "unidad",
+      "marca": "Maribel",
+      "codigoBarras": "13241341451",
+      "fechaCaducidad": "2026-01-07",
+      "alergenos": [],
+      "descripcion": "",
+      "activo": true,
+      "categoria": {
+        "id": 12,
+        "nombre": "Especias y Condimentos"
+      },
+      "proveedor": {
+        "id": 1,
+        "nombre": "Distribuciones Alimentarias Mediterráneo"
+      }
     }
   ]
 }
