@@ -21,7 +21,8 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 - [json-server] para simular API REST — backend simulado con base de datos JSON  
 
 ## 📁 Estructura del Proyecto
-/
+
+{content: 
 ├── assets/
 │ ├── css/
 │ └── data/
@@ -32,7 +33,8 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 │ ├── services/
 │ ├── utils/
 │ └── views/
-└── templates/
+└── templates/}
+
 
 
 ## 🚀 Puntos a destacar del código
@@ -42,5 +44,6 @@ Smart Economato es una aplicación web tipo SPA (Single Page Application) diseñ
 ## 🧪 Puntos a mejorar en el futuro
 - Añadir roles de usuarios, creación de usuarios.
 - Creación de Pedidos y comparación pedidos con recepción.
+
 
 
