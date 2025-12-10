@@ -24,7 +24,14 @@
       </form>
     </div>
   </div>
-  <script type="module" src="src/controllers/loginController.js"></script>
-</body>
+  <script type="module">
+        // Usamos ruta absoluta /src para evitar errores de rutas relativas si mueves el HTML
+        import { inicializar } from '/src/controllers/loginController.js';
 
+        document.addEventListener('DOMContentLoaded', () => {
+            inicializar();
+            console.log("Controlador de Login iniciado correctamente.");
+        });
+    </script>
+</body>
 </html>

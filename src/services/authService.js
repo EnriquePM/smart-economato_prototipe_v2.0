@@ -1,8 +1,6 @@
 const API_URL = 'http://localhost:3000/usuarios'
 
 export async function login(username, password){  
-    
-        
         try{
         const response = await fetch(`${API_URL}?username=${username}&password=${password}`)
         if(!response.ok) throw new Error("Error en la conxión al servidor")
@@ -20,14 +18,13 @@ export async function login(username, password){
         return true
 
         }catch(error){
-            console.error("Error en el login:",error)
             return false
         }
 }
 
 export function logout(){
     localStorage.removeItem('usario_economato')
-    window.location.href = '/templates/login.html'
+    window.location.href = 'login.html';
 }
 
 export function isAuthenticated(){

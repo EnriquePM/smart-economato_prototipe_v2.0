@@ -282,7 +282,7 @@
       "nombre": "Gambas Blancas",
       "precio": 26.4,
       "precioUnitario": "kg",
-      "stock": 22,
+      "stock": 1000000022,
       "stockMinimo": 8,
       "categoriaId": 6,
       "proveedorId": 4,
@@ -338,7 +338,7 @@
       "nombre": "Queso Manchego",
       "precio": 16.8,
       "precioUnitario": "kg",
-      "stock": 75,
+      "stock": 78,
       "stockMinimo": 15,
       "categoriaId": 8,
       "proveedorId": 5,
@@ -1537,6 +1537,31 @@
       "proveedor": {
         "id": 1,
         "nombre": "Distribuciones Alimentarias Mediterráneo"
+      }
+    },
+    {
+      "id": "53",
+      "nombre": "Polvorón2",
+      "precio": 4,
+      "precioUnitario": "unidad",
+      "stock": 4,
+      "stockMinimo": 1,
+      "categoriaId": 1,
+      "proveedorId": 6,
+      "unidunidadMedida": "unidad",
+      "marca": "Prueba",
+      "codigoBarras": "234124312341234",
+      "fechaCaducidad": "2026-01-01",
+      "alergenos": [],
+      "descripcion": "",
+      "activo": true,
+      "categoria": {
+        "id": 1,
+        "nombre": "Frutas Frescas"
+      },
+      "proveedor": {
+        "id": 6,
+        "nombre": "Distribuidora de Aceites Oro Verde"
       }
     }
   ]

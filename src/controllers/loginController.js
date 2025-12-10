@@ -19,8 +19,7 @@ export function inicializar(){
             }
             const correcto = await login(username,password)
             if(correcto){
-            window.location.hash="#economato"
-            window.location.reload();
+            window.location.href="main.html"
             }else{
                 throw new Error("El usuario y/o la constraseña son incorrectos")
             }
